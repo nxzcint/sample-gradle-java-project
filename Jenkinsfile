@@ -37,14 +37,14 @@ pipeline {
             }
             post{
                 success{
-                    archiveArtifacts artifacts: 'gradle/wrapper/*.jar', followSymlinks: false
+                    archiveArtifacts artifacts: 'gradle-wrapper.jar', followSymlinks: false
                 }
             }
         }
         stage('Publish artifacts to S3 Bucket') {
             steps {
                 sh "aws configure set region us-east-1"
-                sh "aws s3 cp ./build/libs/*.jar s3://$AWS_S3_BUCKET/$ARTIFACT_NAME"
+                sh "aws s3 cp ./build/libs/gradle-wrapper.jar s3://$AWS_S3_BUCKET/$ARTIFACT_NAME"
             }
          }
         stage('Deploy') {
