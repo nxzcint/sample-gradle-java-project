@@ -3,7 +3,7 @@ pipeline {
     environment {
         AWS_ACCESS_KEY_ID = credentials('aws-secret-key-id')
         AWS_SECRET_ACCESS_KEY = credentials('aws-secret-access-key')
-        AWS_S3_BUCKET = "asiri-bucket"
+        AWS_S3_BUCKET = "ahmed1-bucket"
         ARTIFACT_NAME = "sample-gradle-project.jar"
         AWS_EB_APP_NAME = "ahmed-gradle1"
         AWS_EB_APP_VERSION = "${BUILD_ID}"
