@@ -4,7 +4,7 @@ pipeline {
         AWS_ACCESS_KEY_ID = credentials('aws-secret-key-id')
         AWS_SECRET_ACCESS_KEY = credentials('aws-secret-access-key')
         AWS_S3_BUCKET = "grdele-bucket"
-        ARTIFACT_NAME = "*.jar"
+        ARTIFACT_NAME = "sample-gradle-project.jar"
         AWS_EB_APP_NAME = "ahmed-gradle1"
         AWS_EB_APP_VERSION = "${BUILD_ID}"
         AWS_EB_ENVIRONMENT = "Ahmedgradle1-env"
@@ -37,14 +37,14 @@ pipeline {
             }
             post{
                 success{
-                    archiveArtifacts artifacts: 'build/libs/*.jar', followSymlinks: false
+                    archiveArtifacts artifacts: 'build/libs/Gradle-java-spring-boot-app-0.0.1-SNAPSHOT.jar', followSymlinks: false
                 }
             }
         }
         stage('Publish artifacts to S3 Bucket') {
             steps {
                 sh "aws configure set region us-east-1"
-                sh "aws s3 cp ./build/libs/*.jar s3://$AWS_S3_BUCKET/$ARTIFACT_NAME"
+                sh "aws s3 cp ./build/libs/Gradle-java-spring-boot-app-0.0.1-SNAPSHOT.jar s3://$AWS_S3_BUCKET/$ARTIFACT_NAME"
             }
          }
         stage('Deploy') {
