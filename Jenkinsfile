@@ -37,7 +37,7 @@ pipeline {
             }
             post{
                 success{
-                    archiveArtifacts artifacts: 'gradle-wrapper.jar', followSymlinks: false
+                    archiveArtifacts artifacts: '*.jar', followSymlinks: false
                 }
             }
         }
