@@ -37,7 +37,7 @@ pipeline {
             }
             post{
                 success{
-                    archiveArtifacts artifacts: 'build/libs/Gradle-java-spring-boot-app-0.0.1-SNAPSHOT.jar', followSymlinks: false
+                    archiveArtifacts artifacts: 'build/libs/*.jar', followSymlinks: false
                 }
             }
         }
